@@ -25,9 +25,9 @@ abstract class DatabaseConnection {
     protected $password;
 
     /**
-     *
+     * Method to get enviroment variable and initialize them for use
      */
-    public function __construct()
+    public function initEnvData()
     {
         $this->loadDotEnv();
         $this->engine   = getenv('DB_ENGINE');
@@ -52,6 +52,7 @@ abstract class DatabaseConnection {
      */
     public function getConnection()
     {
+        $this->initEnvData();
         try {
             return new PDO($this->engine . ":host=" . $this->host . ";dbname=" . $this->name, $this->username, $this->password);
         } catch (PDOException $e) {
