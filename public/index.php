@@ -32,6 +32,15 @@ $authentication = function () use ($app, $auth) {
 };
 
 /**
+ * Function to prompt user that route does not exist
+ */
+$welcome = function() use ($app) {
+    $app->response()->header("Content-Type", "application/json");
+    echo json_encode("Welcome to NaijaEmojiz!!");
+    $app->response->status(200);
+};
+
+/**
  * Function to get all Emojis
  */
 $getAllEmojiz = function () use ($app, $db) {
@@ -109,6 +118,8 @@ $pageNotFound = function() use ($app) {
 /**
  * Routes for NaijaEmojiz API
  */
+$app->get("/", $welcome);
+
 $app->get("/emojiz", $getAllEmojiz);
 
 $app->get("/emoji/:id", $getOneEmoji);
