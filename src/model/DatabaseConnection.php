@@ -24,6 +24,7 @@ abstract class DatabaseConnection {
     protected $username;
     protected $password;
     protected $host;
+    protected $port;
 
     /**
      * Method to get enviroment variable and initialize them for use
@@ -36,6 +37,7 @@ abstract class DatabaseConnection {
         $this->name     = getenv('DB_NAME');
         $this->username = getenv('DB_USERNAME');
         $this->password = getenv('DB_PASSWORD');
+        $this->port     = getenv('DB_PORT');
     }
 
     /**
