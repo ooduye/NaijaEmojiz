@@ -23,6 +23,7 @@ abstract class DatabaseConnection {
     protected $name;
     protected $username;
     protected $password;
+    protected $host;
 
     /**
      * Method to get enviroment variable and initialize them for use
@@ -41,8 +42,10 @@ abstract class DatabaseConnection {
      * Method to load environment variables
      */
     protected function loadDotEnv(){
-        $dotenv = new Dotenv(__DIR__ . '/../../');
-        $dotenv->load();
+        if (! getenv('APP_ENV')) {
+            $dotenv = new \Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
+            $dotenv->load();
+        }
     }
 
     /**
@@ -53,11 +56,15 @@ abstract class DatabaseConnection {
     public function getConnection()
     {
         $this->initEnvData();
-        try {
-            return new PDO($this->engine . ":host=" . $this->host . ";dbname=" . $this->name, $this->username, $this->password);
-        } catch (PDOException $e) {
-            return "Connection to database failed: " . $e->getMessage();
+        if ($this->engine === 'pgsql') {
+            $dbConn = new PDO($this->engine . ':host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->name . ';user=' . $this->username . ';password=' . $this->password);
+            $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $dbConn->setAttribute(PDO::ATTR_PERSISTENT, false);
+        } elseif ($this->engine === 'mysql') {
+            $dbConn = new PDO($this->engine . ':host=' . $this->host . ';dbname=' . $this->name . ';charset=utf8mb4', $this->username, $this->password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_PERSISTENT => false]);
         }
+        return $dbConn;
     }
 
     /**
