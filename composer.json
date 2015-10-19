@@ -31,10 +31,10 @@
   },
   "autoload": {
     "classmap": [
-      "public/"
+      "src/"
     ],
     "psr-4": {
-      "Yemisi\\": "public"
+      "Yemisi\\": "src"
     }
   },
   "scripts": {

@@ -40,7 +40,7 @@ class EmojiController extends DatabaseConnection implements EmojiControllerStruc
             );
         }
          echo json_encode($emojiz);
-         $app->response->status(404);
+         $app->response->status(200);
     }
 
     /**

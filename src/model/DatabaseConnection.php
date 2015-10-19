@@ -43,7 +43,7 @@ abstract class DatabaseConnection {
      */
     protected function loadDotEnv(){
         if (! getenv('APP_ENV')) {
-            $dotenv = new \Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
+            $dotenv = new \Dotenv\Dotenv(__DIR__ . '/../../');
             $dotenv->load();
         }
     }
