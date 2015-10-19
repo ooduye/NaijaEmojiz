@@ -11,4 +11,12 @@ class UserControllerSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Yemisi\Controller\UserController');
     }
+
+    function it_should_be_an_user_controller_structure()
+    {
+        $this->shouldHaveType('Yemisi\Structure\UserControllerStructure');
+        $this->shouldReturnAnInstanceOf('Yemisi\Structure\UserControllerStructure');
+        $this->shouldBeAnInstanceOf('Yemisi\Structure\UserControllerStructure');
+        $this->shouldImplement('Yemisi\Structure\UserControllerStructure');
+    }
 }
