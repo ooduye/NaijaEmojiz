@@ -89,6 +89,14 @@ $deleteOneEmoji = function ($id) use($app, $db) {
 /**
  * Function to log in a user
  */
+$registerUser = function () use($app, $user) {
+    $app->response()->header("Content-Type", "application/json");
+    $user->registerUser($app);
+};
+
+/**
+ * Function to log in a user
+ */
 $userLogin = function () use($app, $user) {
     $app->response()->header("Content-Type", "application/json");
     $user->userLogin($app);
@@ -133,6 +141,8 @@ $app->patch("/emoji/:id", $authentication, $editOneEmoji);
 $app->delete("/emoji/:id", $authentication, $deleteOneEmoji);
 
 $app->notFound($pageNotFound);
+
+$app->post("/register", $registerUser);
 
 $app->post("/login", $userLogin);
 

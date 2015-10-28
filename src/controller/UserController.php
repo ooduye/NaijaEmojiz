@@ -69,6 +69,34 @@ class UserController extends DatabaseConnection implements UserControllerStructu
     /**
      * @param $app
      *
+     * Method to log in user the API
+     */
+    public function registerUser($app) {
+
+        $db = $this->databaseConnection();
+
+        $user = $app->request()->post();
+
+        $result = $db->users->insert($user);
+
+        if ($result["id"] === NULL) {
+            echo json_encode(array(
+                "status" =>304,
+                "message" =>"User was not created"
+            ));
+            $app->response->status(304);
+        } else {
+            echo json_encode(array(
+                "status" => 201,
+                "message" => "User has been created"
+            ));
+            $app->response->status(201);
+        }
+    }
+
+    /**
+     * @param $app
+     *
      * Method to log out a user from the API
      */
     public function userLogout($app) {
