@@ -36,7 +36,6 @@ $authentication = function () use ($app, $auth) {
  * Function to prompt user that route does not exist
  */
 $welcome = function() use ($app) {
-    $app->response()->header("Content-Type", "application/json");
     echo ViewDisplay::landing();
     $app->response->status(200);
 };
