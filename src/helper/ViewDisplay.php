@@ -22,7 +22,7 @@ class ViewDisplay {
     			text-align: center;
 			}
 		</style></head>" .
-        "<div style='text-align:center;color:#E5E5E5;'>" .
+        "<div style='text-align:center;color:#fcc628;'>" .
         "<h1>Welcome to NaijaEmojiz.</h1>" .
         "<span style='font-weight:normal;font-size:16px'>Register <a href='/register'>here</a></span>" .
         "</div>" .
