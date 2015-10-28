@@ -33,7 +33,7 @@ class AuthMiddleware extends DatabaseConnection {
 
         if ($user = $user->fetch()) {
             if ($user['token'] === $tokenAuth) {
-                if ($user['token_expire'] < date('Y-m-d H:i:s')) {
+                if ($user['token_expire'] >= date('Y-m-d H:i:s')) {
                     echo json_encode(array(
                         "status" => 401,
                         "message" => "Token is expired. Please login again"
