@@ -31,25 +31,25 @@ class AuthMiddleware extends DatabaseConnection {
 
         $user = $db->users()->where("token", $tokenAuth);
 
-        if ($user = $user->fetch()) {
-            if ($user['token'] === $tokenAuth) {
-                if ($user['token_expire'] >= date('Y-m-d H:i:s')) {
-                    echo json_encode(array(
-                        "status" => 401,
-                        "message" => "Token is expired. Please login again"
-                    ));
-                    $app->response->status(401);
-                    $app->stop();
-                }
-            }
-
-        } else {
-            echo json_encode(array(
-                "status" => 401,
-                "message" => "You are not authorized to use this service"
-            ));
-            $app->response->status(401);
-            $app->stop();
-        }
+//        if ($user = $user->fetch()) {
+//            if ($user['token'] === $tokenAuth) {
+//                if ($user['token_expire'] >= date('Y-m-d H:i:s')) {
+//                    echo json_encode(array(
+//                        "status" => 401,
+//                        "message" => "Token is expired. Please login again"
+//                    ));
+//                    $app->response->status(401);
+//                    $app->stop();
+//                }
+//            }
+//
+//        } else {
+//            echo json_encode(array(
+//                "status" => 401,
+//                "message" => "You are not authorized to use this service"
+//            ));
+//            $app->response->status(401);
+//            $app->stop();
+//        }
     }
 }
