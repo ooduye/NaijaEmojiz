@@ -32,35 +32,35 @@ class ViewDisplay {
     		<th>Functionality</th>
     	</tr>
     	<tr>
-    		<td>POST /auth/login</td>
+    		<td>POST /login</td>
     		<td>Logs a user in</td>
   		</tr>
   		<tr>
-    		<td>GET /auth/logout</td>
+    		<td>GET /logout</td>
     		<td>Logs a user out</td>
   		</tr>
   		<tr>
-    		<td>GET /emojis</td>
+    		<td>GET /emojiz</td>
     		<td>Lists all the created emojis</td>
   		</tr>
   		<tr>
-    		<td>GET /emojis/{id}</td>
+    		<td>GET /emoji/{id}</td>
     		<td>Gets a single emoji</td>
   		</tr>
   		<tr>
-    		<td>POST /emojis</td>
+    		<td>POST /emoji</td>
     		<td>Creates a new emoji</td>
   		</tr>
   		<tr>
-    		<td>PUT /emojis/{id}</td>
+    		<td>PUT /emoji/{id}</td>
     		<td>Updates an emoji</td>
   		</tr>
   		<tr>
-    		<td>PATCH /emojis/{id}</td>
+    		<td>PATCH /emoji/{id}</td>
     		<td>Partially updates an emoji</td>
   		</tr>
   		<tr>
-    		<td>DELETE /emojis/{id}</td>
+    		<td>DELETE /emoji/{id}</td>
     		<td>Deletes a single emoji</td>
   		</tr>
   		<tr>
@@ -70,14 +70,6 @@ class ViewDisplay {
   		<tr>
     		<td>POST /register</td>
     		<td>Creates a user account</td>
-  		</tr>
-  		<tr>
-    		<td>PATCH /user/{username}</td>
-    		<td>Changes password of a user</td>
-  		</tr>
-  		<tr>
-    		<td>DELETE /user/{username}</td>
-    		<td>Deletes a user account</td>
   		</tr>
   		<tr>
     		<td>GET /</td>
