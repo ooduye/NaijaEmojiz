@@ -95,21 +95,26 @@ class EmojiController extends DatabaseConnection implements EmojiControllerStruc
 
         $emoji = $app->request()->post();
 
+        $emoji['date_created'] = date('Y-m-d H:i:s');
+
+        $emoji['date_updated'] = date('Y-m-d H:i:s');
+
         $emoji['created_by'] = $username;
 
         $result = $db->emojiz->insert($emoji);
 
         if ($result["id"] === NULL) {
             echo json_encode(array(
-               "status" =>304,
-                "message" =>"Emoji was not created"
+                "status" => 201,
+                "message" => "Emoji was created"
             ));
-            $app->response->status(304);
+            $app->response->status(201);
         } else {
             echo json_encode(array(
-                "status" => 201,
-                "id" => $result["id"]));
-            $app->response->status(201);
+                "status" =>304,
+                "message" => "Emoji was not created"
+            ));
+            $app->response->status(304);
         }
     }
 
@@ -127,20 +132,23 @@ class EmojiController extends DatabaseConnection implements EmojiControllerStruc
 
         if ($emoji->fetch()) {
             $post = $app->request()->put();
+
+            $post['date_updated'] = date('Y-m-d H:i:s');
+            
             $result = $emoji->update($post);
 
             if ($result["id"] === NULL) {
-                echo json_encode(array(
-                    "status" =>304,
-                    "message" =>"Emoji was not updated"
-                ));
-                $app->response->status(304);
-            } else {
                 echo json_encode(array(
                     "status" => 200,
                     "message" => "Emoji $id updated successfully"
                 ));
                 $app->response->status(200);
+            } else {
+                echo json_encode(array(
+                    "status" =>304,
+                    "message" =>"Emoji was not updated"
+                ));
+                $app->response->status(304);
             }
 
 
@@ -171,16 +179,16 @@ class EmojiController extends DatabaseConnection implements EmojiControllerStruc
 
             if ($result["id"] === NULL) {
                 echo json_encode(array(
-                    "status" =>304,
-                    "message" =>"Emoji was not deleted"
-                ));
-                $app->response->status(304);
-            } else {
-                echo json_encode(array(
                     "status" => 200,
                     "message" => "Emoji $id deleted successfully"
                 ));
                 $app->response->status(200);
+            } else {
+                echo json_encode(array(
+                    "status" =>304,
+                    "message" =>"Emoji was not deleted"
+                ));
+                $app->response->status(304);
             }
         }
         else{

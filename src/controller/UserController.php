@@ -81,16 +81,16 @@ class UserController extends DatabaseConnection implements UserControllerStructu
 
         if ($result["id"] === NULL) {
             echo json_encode(array(
-                "status" =>304,
-                "message" =>"User was not created"
-            ));
-            $app->response->status(304);
-        } else {
-            echo json_encode(array(
                 "status" => 201,
                 "message" => "User has been created"
             ));
             $app->response->status(201);
+        } else {
+            echo json_encode(array(
+                "status" =>304,
+                "message" =>"User was not created"
+            ));
+            $app->response->status(304);
         }
     }
 
