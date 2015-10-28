@@ -134,7 +134,7 @@ class EmojiController extends DatabaseConnection implements EmojiControllerStruc
             $post = $app->request()->put();
 
             $post['date_updated'] = date('Y-m-d H:i:s');
-            
+
             $result = $emoji->update($post);
 
             if ($result["id"] === NULL) {

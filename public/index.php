@@ -3,6 +3,7 @@
 require_once "../vendor/autoload.php";
 
 use Slim\Slim;
+use Yemisi\Helper\ViewDisplay;
 use Yemisi\Middleware\AuthMiddleware;
 use Yemisi\Controller\UserController;
 use Yemisi\Controller\EmojiController;
@@ -36,7 +37,7 @@ $authentication = function () use ($app, $auth) {
  */
 $welcome = function() use ($app) {
     $app->response()->header("Content-Type", "application/json");
-    echo json_encode("Welcome to NaijaEmojiz!!");
+    echo ViewDisplay::landing();
     $app->response->status(200);
 };
 
@@ -127,6 +128,10 @@ $pageNotFound = function() use ($app) {
  * Routes for NaijaEmojiz API
  */
 $app->get("/", $welcome);
+
+$app->get('/register', function () {
+    echo ViewDisplay::registerForm();
+});
 
 $app->get("/emojiz", $getAllEmojiz);
 
