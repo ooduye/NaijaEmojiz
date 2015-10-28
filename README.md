@@ -37,8 +37,8 @@ If you discover any security related issues, please email oluwayemisioduye@gmail
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-travis]: https://img.shields.io/travis/andela-ooduye/NaijaEmojiz/master.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/andela-ooduye/EvangelistStatus/master.svg?style=flat-square
 
-[link-travis]: https://travis-ci.org/andela-ooduye/NaijaEmojiz
+[link-travis]: https://travis-ci.org/andela-ooduye/EvangelistStatus
 [link-author]: https://github.com/andela-ooduye
 [link-contributors]: ../../contributors
